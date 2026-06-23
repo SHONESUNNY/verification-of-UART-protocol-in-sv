@@ -1,10 +1,10 @@
-# 📡 UART Transceiver & OOP SystemVerilog Testbench
+#  UART Transceiver & OOP SystemVerilog Testbench
 
 A complete, synthesizable UART (Universal Asynchronous Receiver-Transmitter) hardware module paired with a robust, Object-Oriented SystemVerilog verification environment. 
 
 This project demonstrates both hardware RTL design (FSMs, Shift Registers, Clock Dividers) and modern hardware verification techniques using custom OOP classes, Mailboxes, and Events.
 
-## 🚀 Overview
+##  Overview
 This repository contains two main domains:
 1. **The Hardware (RTL):** A synthesizable UART Transmitter (`uart_tx`) and Receiver (`uart_rx`) written in SystemVerilog. It converts parallel data into serial bits and perfectly reconstructs them on the other side using mid-bit sampling.
 2. **The Verification Environment:** A custom, UVM-style testbench that generates randomized data, drives it into the hardware, monitors the physical serial wire, and automatically grades the results using a Scoreboard.
@@ -18,7 +18,7 @@ This repository contains two main domains:
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ### 1. Hardware RTL (Design Under Test)
 * **`uart_tx` (Transmitter):** Acts as a parallel-to-serial converter. When `tx_start` is asserted, it loads an 8-bit payload into a 10-bit shift register (appending Start and Stop bits) and shifts them onto the `tx` wire at precisely the calculated baud rate.
@@ -35,7 +35,7 @@ The testbench is built using dynamic SystemVerilog classes, entirely divorcing t
 
 ---
 
-## 🛠️ Key Engineering Problems Solved
+## 🛠️Key Engineering Problems Solved
 
 * **Race Conditions:** Resolved driver-to-hardware race conditions by enforcing a 1-clock-cycle delay after dropping `tx_start`. This allows the slow physical silicon time to assert the `tx_busy` flag before the software loops back to check it.
 * **Asynchronous Sampling:** Implemented center-sampling in the Receiver FSM to avoid reading unstable voltage transitions on the physical wire edges. 
@@ -43,7 +43,7 @@ The testbench is built using dynamic SystemVerilog classes, entirely divorcing t
 
 ---
 
-## 📁 File Structure
+##  File Structure
 
 ```text
 ├── rtl/
