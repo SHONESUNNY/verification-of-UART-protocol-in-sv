@@ -1,7 +1,7 @@
 #  UART Transceiver & OOP SystemVerilog Testbench
 
 A complete, synthesizable UART (Universal Asynchronous Receiver-Transmitter) hardware module paired with a robust, Object-Oriented SystemVerilog verification environment. 
-
+since UART is an asyncronous protocol I used wait cmds like :  wait(vif.tx_busy === 1'b0); and @(posedge vif.clk) to ensure synchronization
 This project demonstrates both hardware RTL design (FSMs, Shift Registers, Clock Dividers) and modern hardware verification techniques using custom OOP classes, Mailboxes, and Events.
 
 ##  Overview
@@ -21,7 +21,7 @@ This repository contains two main domains:
 ##  Architecture
 
 ### 1. Hardware RTL (Design Under Test)
-* **`uart_tx` (Transmitter):** Acts as a parallel-to-serial converter. When `tx_start` is asserted, it loads an 8-bit payload into a 10-bit shift register (appending Start and Stop bits) and shifts them onto the `tx` wire at precisely the calculated baud rate.
+* **`uart_tx` (Transmitter):** Acts as a parallel-to-serial converter. When `tx_start` is asserted, it loads an 8-bit payload into a 8 -bit shift register  and shifts them onto the `tx` wire at precisely the calculated baud rate.
 * **`uart_rx` (Receiver):** Acts as a serial-to-parallel converter. It utilizes an internal oversampling counter to detect the falling edge of the Start Bit. It then shifts its internal metronome by half a bit period `(CLKS_PER_BIT / 2)` to guarantee that all subsequent data bits are sampled in the exact, stable center of the waveform. It utilizes a **Double Buffering** architecture to prevent outputting corrupted data while the byte is being built.
 
 ### 2. The Verification Environment
