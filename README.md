@@ -1,7 +1,7 @@
 #  UART Transceiver & OOP SystemVerilog Testbench
 
 A complete, synthesizable UART (Universal Asynchronous Receiver-Transmitter) hardware module paired with a robust, Object-Oriented SystemVerilog verification environment. 
-since UART is an asyncronous protocol I used wait cmds like :  wait(vif.tx_busy === 1'b0); and @(posedge vif.clk) to ensure synchronization
+since UART is an asyncronous protocol I used wait cmds like :  wait(vif.tx_busy === 1'b0); and @(posedge vif.clk) to ensure synchronization.
 This project demonstrates both hardware RTL design (FSMs, Shift Registers, Clock Dividers) and modern hardware verification techniques using custom OOP classes, Mailboxes, and Events.
 
 ##  Overview
